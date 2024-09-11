@@ -1,41 +1,39 @@
 import './App.css';
 
-import { useState } from 'react';
+import { Avatar, Box, Card, createTheme, Stack, ThemeProvider, Typography } from '@mui/material';
 
-import viteLogo from '/vite.svg';
+import AchievementList from './components/AchievementList';
 
-import reactLogo from './assets/react.svg';
+const theme = createTheme({
+  typography: {
+    fontFamily: "Pretendard",
+  }
+})
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ThemeProvider theme={theme}>
+      <Box display="flex" justifyContent="center" marginTop="20px">
+        <Stack direction="row" spacing={2}>
+          <Box sx={{paddingTop: "10px"}}>
+            <Avatar src="./carrot_anonymous.jpg" sx={{width: "200px", height: "200px"}}/>
+            <Stack direction="column" spacing={"1px"}>
+              <Typography variant="h5" fontWeight={500}>임혜진</Typography>
+              <Typography>#지구환경과학부</Typography>
+              <Typography>#IN?F?P?</Typography>
+              <Typography>#대학원_탈주</Typography>
+              <Typography></Typography>
+            </Stack>
+          </Box>
+          <Card sx={{ width: 400}}>
+            <Typography sx={{ padding: "10px"}}  variant="h5" component="div" fontWeight={900}>인생 업적</Typography>
+            <AchievementList/>
+          </Card>
+        </Stack>
+      </Box>
+    </ThemeProvider>
+    
   );
 }
 
